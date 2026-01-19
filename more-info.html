@@ -10,732 +10,117 @@
   <meta property="og:description" content="Compare UAE eSIM plans, check device compatibility, and follow setup steps with our quick FAQ." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://uaesim.com/more-info.html" />
-  <meta property="og:image" content="https://uaesim.com/assets/hero-dubai.webp" />
+  <meta property="og:image" content="https://uaesim.com/assets/img/hero-dubai.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="UAE eSIM Plans, Setup &amp; FAQ | uaesim" />
   <meta name="twitter:description" content="Compare UAE eSIM plans, check device compatibility, and follow setup steps with our quick FAQ." />
-  <meta name="twitter:image" content="https://uaesim.com/assets/hero-dubai.webp" />
+  <meta name="twitter:image" content="https://uaesim.com/assets/img/hero-dubai.webp" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --bg0:#0f1218;
-    --surface:#161a22;
-    --surface2:#151821;
-    --text:#eaeaea;
-    --muted:rgba(234,234,234,.72);
-    --muted2:rgba(234,234,234,.55);
-
-    --gold:#d4af37;
-    --goldSoft:#e6c27a;
-
-    --shadow: 0 16px 48px rgba(0,0,0,.35);
-    --radius: 18px;
-    --radius2: 26px;
-    --max: 1120px;
-  }
-
-  *{box-sizing:border-box}
-  html,body{height:100%}
-
-  body{
-    margin:0;
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color:var(--text);
-    background: var(--bg0);
-    overflow-x:hidden;
-    position: relative;
-  }
-
-  /* ===== PAGE BACKGROUNDS (TOP + BOTTOM) ===== */
-.pageBg{
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -3;
-
-  /* 1) képek + 2) kontrollált sötétítés + 3) arany glow + 4) vignette */
-  background:
-    /* TOP skyline (finoman) */
-    url("assets/background_top.webp") top center / cover no-repeat,
-
-    /* BOTTOM bokeh (erősebben, hogy a footerben is kijöjjön) */
-    url("assets/background_bottom.webp") bottom center / cover no-repeat,
-
-    /* arany glow a hero köré */
-    radial-gradient(1100px 650px at 35% 18%, rgba(212,175,55,.18), transparent 62%),
-
-    /* fő sötétítés (NE legyen túl erős) */
-    linear-gradient(180deg,
-      rgba(8,10,14,.15) 0%,
-      rgba(8,10,14,.35) 45%,
-      rgba(8,10,14,.55) 100%
-    ),
-
-    /* vignette (széleken sötétebb, középen tisztább) */
-    radial-gradient(1400px 900px at 50% 35%,
-      transparent 40%,
-      rgba(0,0,0,.55) 100%
-    );
-
-  /* luxus: picit mélyebb kontraszt */
-  filter: saturate(1.08) contrast(1.06);
-}
-
-
-  .pageBgTop{
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -4;
-    background-image: url("assets/background_top.webp");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    opacity: .24; /* finom, luxus */
-  }
-  .pageBgBottom{
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -5;
-    background-image: url("assets/background_bottom.webp");
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    opacity: .22;
-  }
-
-  /* Stable grain (NO blend, NO blur) */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.06;
-    z-index:-2;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-  }
-
-  /* Kill seam triggers globally */
-  *{
-    mix-blend-mode: normal !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    filter: none !important;
-  }
-
-  /* Background ornaments OFF */
-  .bg-ornaments{display:none !important;}
-
-  .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 54px; position:relative; z-index:1;}
-
-  /* Top bar */
-  .topbar{display:flex; align-items:center; justify-content:space-between; padding:10px 0 24px; gap:14px}
-  .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);}
-
-  /* === GOLD OUTLINE SIM LOGO (left of brand) === */
-  .logoSim{
-    width:34px;
-    height:34px;
-    flex:0 0 auto;
-    border-radius:12px;
-    position:relative;
-    background: rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.10);
-    box-shadow: 0 0 18px rgba(212,175,55,.18), inset 0 0 12px rgba(255,255,255,.08);
-    overflow:hidden;
-    display:grid;
-    place-items:center;
-  }
-  .logoSim svg{width:22px; height:22px; display:block;}
-  .logoSim .goldStroke{
-    stroke: url(#goldGrad);
-    stroke-width: 2.2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .logoSim::after{
-    content:"";
-    position:absolute;
-    inset:-60%;
-    background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.55) 50%, transparent 60%);
-    transform: translateX(-70%);
-    animation: simShimmer 2.6s ease-in-out infinite;
-    opacity:.8;
-    pointer-events:none;
-  }
-  @keyframes simShimmer{
-    0%{transform: translateX(-75%)}
-    55%{transform: translateX(75%)}
-    100%{transform: translateX(75%)}
-  }
-
-  .brandName{font-weight:600; letter-spacing:.2px;}
-  .brandSub{display:block; font-size:12px; color:var(--muted2); margin-top:2px;}
-
-  .miniNav{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
-  .navLink{
-    font-size:13px; color:var(--muted); text-decoration:none;
-    padding:10px 12px; border:1px solid rgba(255,255,255,.10);
-    border-radius:999px; background:rgba(255,255,255,.03);
-  }
-  .navLink:hover{border-color:rgba(212,175,55,.35); color:var(--text)}
-
-  /* Hero */
-  .hero{
-    position:relative;
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(22,26,34,.88);
-    border-radius: var(--radius2);
-    box-shadow: var(--shadow);
-    overflow:hidden;
-  }
-  /* IMPORTANT: disable hero decorative layer (this caused oval) */
-  .hero::before{content:none !important; display:none !important;}
-
-  .heroInner{
-    position:relative;
-    padding:44px 30px 34px;
-    display:grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
-    gap:26px;
-    align-items:start;
-  }
-
-  .tag{
-    display:inline-flex; gap:8px; align-items:center;
-    font-size:12px; letter-spacing:.35px; text-transform:uppercase;
-    color:rgba(234,234,234,.82);
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.03);
-    border-radius:999px; padding:8px 12px;
-  }
-  .dot{width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 18px rgba(212,175,55,.55);}
-
-  h1{
-    font-family: "Playfair Display", serif;
-    font-weight:600; margin:14px 0 12px;
-    font-size:44px; line-height:1.02; letter-spacing:.2px;
-  }
-  .subhead{color:var(--muted); font-size:16px; line-height:1.55; max-width:58ch; margin:0 0 18px;}
-
-  .bullets{display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 22px;}
-  .pill{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:10px 12px; border-radius:14px;
-    border:1px solid rgba(255,255,255,.10);
-    background:rgba(255,255,255,.03);
-    font-size:13px; color:rgba(234,234,234,.86);
-  }
-  .check{
-    width:16px; height:16px; border-radius:6px;
-    border:1px solid rgba(212,175,55,.55);
-    background:rgba(212,175,55,.10);
-    display:inline-grid; place-items:center;
-    flex:0 0 auto;
-  }
-  .check svg{width:12px; height:12px; fill:rgba(212,175,55,.95)}
-
-  .ctaRow{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:6px;}
-  .btn{
-    appearance:none;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.03);
-    color:var(--text);
-    padding:12px 16px;
-    border-radius: 999px;
-    font-size:14px;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    transition: transform .08s ease, border-color .15s ease, background .15s ease;
-  }
-  .btn:hover{border-color:rgba(212,175,55,.42); background:rgba(255,255,255,.05)}
-  .btn:active{transform: translateY(1px)}
-  .btnPrimary{
-    border-color: rgba(212,175,55,.55);
-    background: rgba(26,29,38,.90);
-  }
-  .btnPrimary:hover{border-color: rgba(212,175,55,.85)}
-
-  .micro{font-size:12px; color:var(--muted2); margin-top:10px;}
-  .micro a{color:rgba(234,234,234,.78); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.18)}
-  .micro a:hover{border-bottom-color:rgba(212,175,55,.55)}
-
-  .microCard{
-    font-size:12px;
-    color:var(--muted2);
-    margin:0;
-    text-align:center;
-    line-height:1.35;
-  }
-  .microCard a{color:rgba(234,234,234,.78); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.18)}
-  .microCard a:hover{border-bottom-color:rgba(212,175,55,.55)}
-
-  /* Right hero panel */
-  .heroSide{
-    padding:18px;
-    border-radius: var(--radius);
-    border:1px solid rgba(255,255,255,.12);
-    background: rgba(21,24,33,.92);
-    box-shadow: 0 18px 50px rgba(0,0,0,.25);
-    min-height: 220px;
-  }
-  .sideTitle{font-size:13px; color:rgba(234,234,234,.80); letter-spacing:.25px; margin:0 0 10px;}
-  .statGrid{display:grid; gap:10px;}
-  .stat{
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.03);
-    border-radius: 16px;
-    padding:12px;
-  }
-  .stat .k{font-size:12px; color:var(--muted2);}
-  .stat .v{
-    margin-top:6px; font-size:14px;
-    color:rgba(234,234,234,.90);
-    display:flex; align-items:center; justify-content:space-between;
-    gap:10px;
-  }
-  .badge{
-    font-size:12px;
-    padding:6px 10px;
-    border-radius:999px;
-    border:1px solid rgba(212,175,55,.45);
-    background: rgba(212,175,55,.10);
-    color:rgba(234,234,234,.90);
-    white-space:nowrap;
-  }
-
-  /* Sections */
-  .section{margin-top:22px; padding:26px 0 0;}
-  .sectionHeader{display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:14px;}
-  h2{margin:0; font-size:20px; letter-spacing:.2px;}
-  .lead{margin:6px 0 0; color:var(--muted2); font-size:13px; max-width:70ch;}
-
-  /* Packages panel */
-  #packages{ padding-top: 0; }
-  .packagesPanel{
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(22,26,34,.88);
-    border-radius: var(--radius2);
-    padding: 18px;
-    box-shadow: var(--shadow);
-    overflow:hidden;
-  }
-
-  /* Packages */
-  .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
-
-  .card{
-    position:relative;
-    display:flex;
-    min-height:240px;
-    padding:16px;
-    border-radius: var(--radius);
-    overflow:hidden;
-    background: rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.10);
-    box-shadow: 0 16px 48px rgba(0,0,0,.30);
-  }
-
-  .cardInner{
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    height:100%;
-  }
-
-  .planTop{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:10px;}
-  .planName{font-weight:600; letter-spacing:.2px; font-size:15px;}
-  .planFor{color:var(--muted2); font-size:12px; margin-top:6px; line-height:1.35;}
-  .price{
-    font-family:"Playfair Display", serif;
-    font-size:22px;
-    color:rgba(234,234,234,.96);
-    margin-top:-2px;
-    text-align:right;
-    white-space:nowrap;
-  }
-  .per{font-family:Inter, sans-serif; font-size:12px; color:var(--muted2); margin-left:6px;}
-
-  .list{
-    margin:12px 0 14px;
-    padding:0;
-    list-style:none;
-    display:grid;
-    gap:8px;
-    flex: 1 1 auto;
-  }
-  .list li{display:flex; gap:10px; align-items:flex-start; color:rgba(234,234,234,.86); font-size:13px; line-height:1.35;}
-  .tick{
-    width:18px; height:18px; border-radius:7px;
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.03);
-    display:inline-grid; place-items:center;
-    flex:0 0 auto;
-    margin-top:1px;
-  }
-  .tick svg{width:12px;height:12px; fill: rgba(212,175,55,.95)}
-  .card .btn{width:100%; justify-content:center}
-
-  .ctaWrap{
-    margin-top:auto;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-
-  /* Featured Business Pack */
-  .featured{
-    border-color: rgba(230,194,122,.70);
-    background: rgba(255,255,255,.03);
-    box-shadow:
-      0 18px 56px rgba(0,0,0,.45),
-      0 0 0 1px rgba(230,194,122,.18),
-      0 0 22px rgba(230,194,122,.12),
-      0 0 44px rgba(212,175,55,.08);
-    transform: translateY(-4px);
-  }
-
-  .popularBadge{
-    position:absolute;
-    top:12px;
-    left:50%;
-    transform: translateX(-50%);
-    font-size:11px;
-    letter-spacing:.46px;
-    text-transform:uppercase;
-    padding:8px 14px;
-    border-radius:999px;
-    color:rgba(18,18,18,.92);
-    border:1px solid rgba(230,194,122,.70);
-    background:
-      radial-gradient(14px 14px at 18% 30%, rgba(255,255,255,.45), transparent 62%),
-      linear-gradient(135deg, rgba(255,240,190,.96), rgba(212,175,55,.94), rgba(255,211,107,.92));
-    box-shadow:
-      0 10px 22px rgba(0,0,0,.35),
-      0 0 18px rgba(230,194,122,.18),
-      0 0 40px rgba(212,175,55,.12);
-    overflow:hidden;
-    user-select:none;
-    pointer-events:none;
-  }
-  .popularBadge::after{
-    content:"";
-    position:absolute; inset:-2px;
-    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,.28) 48%, rgba(255,255,255,0) 60%, transparent 100%);
-    transform: translateX(-60%);
-    animation: shimmer 2.4s ease-in-out infinite;
-    opacity:.9;
-  }
-  @keyframes shimmer{
-    0%{transform: translateX(-70%)}
-    55%{transform: translateX(70%)}
-    100%{transform: translateX(70%)}
-  }
-
-  /* Fix: MOST POPULAR badge ne érjen bele a címbe */
-  .card.featured .cardInner{
-    padding-top: 38px !important;
-  }
-  .card.featured .popularBadge{
-    top: 12px !important;
-  }
-
-  /* How it works + trust */
-  .grid2{display:grid; grid-template-columns: 1.15fr .85fr; gap:14px;}
-  .panel{
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(21,24,33,.92);
-    border-radius: var(--radius);
-    padding:16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.22);
-  }
-  .steps{display:grid; gap:10px; margin-top:10px}
-  .step{
-    display:grid; grid-template-columns: 34px 1fr;
-    gap:12px; align-items:start;
-    padding:12px;
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,.08);
-    background: rgba(255,255,255,.02);
-  }
-  .num{
-    width:34px; height:34px; border-radius:14px;
-    display:grid; place-items:center;
-    border:1px solid rgba(212,175,55,.40);
-    background: rgba(212,175,55,.10);
-    color:rgba(234,234,234,.95);
-    font-weight:600;
-  }
-  .step h3{margin:0; font-size:14px}
-  .step p{margin:6px 0 0; color:var(--muted2); font-size:13px; line-height:1.45}
-
-  .trustGrid{display:grid; gap:10px; margin-top:10px;}
-  .trust{
-    padding:12px;
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,.08);
-    background: rgba(255,255,255,.02);
-  }
-  .trust b{font-size:13px}
-  .trust div{margin-top:6px; color:var(--muted2); font-size:12px; line-height:1.45}
-
-  /* FAQ */
-  .faqWrap{display:grid; gap:12px; margin-top:12px;}
-  .faqItem{
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(21,24,33,.92);
-    border-radius: 16px;
-    overflow:hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,.22);
-  }
-  .faqBtn{
-    width:100%;
-    border:0;
-    background: transparent;
-    color: rgba(234,234,234,.92);
-    padding:16px 16px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    font-size:14px;
-    text-align:left;
-  }
-  .faqQ{font-weight:600; letter-spacing:.1px; color: rgba(234,234,234,.88);}
-  .faqIcon{
-    width:30px; height:30px;
-    border-radius:10px;
-    display:grid; place-items:center;
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.03);
-    flex:0 0 auto;
-  }
-  .faqIcon svg{width:16px; height:16px; fill: rgba(234,234,234,.75)}
-  .faqBody{
-    display:none;
-    padding:0 16px 16px 16px;
-    color: var(--muted2);
-    font-size:13px;
-    line-height:1.6;
-  }
-  .faqBody ul{margin:10px 0 0; padding-left:18px}
-  .faqBody li{margin:6px 0}
-  .faqItem.open .faqBody{display:block}
-  .faqItem.open .faqIcon{
-    border-color: rgba(212,175,55,.30);
-    background: rgba(212,175,55,.10);
-    box-shadow: 0 0 18px rgba(212,175,55,.10);
-  }
-  .faqItem.open .faqIcon svg{fill: rgba(212,175,55,.95)}
-  .faqHint{margin-top:10px; font-size:12px; color: var(--muted2);}
-  .faqHint a{color:rgba(234,234,234,.82); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.18)}
-  .faqHint a:hover{border-bottom-color:rgba(212,175,55,.55)}
-
-  /* Footer */
-  .footer{margin-top:26px; border-top:1px solid rgba(255,255,255,.10); padding-top:18px;}
-  .footerCard{
-    position: relative;
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(21,24,33,.92);
-    border-radius: 18px;
-    padding:18px;
-    box-shadow: var(--shadow);
-    overflow:hidden;
-  }
-  /* footer luxury background layer */
-  .footerCard::before{
-    content:"";
-    position:absolute;
-    inset:-30%;
-    background-image: url("assets/background_bottom.webp");
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat:no-repeat;
-    opacity:.18;
-    pointer-events:none;
-    z-index:0;
-  }
-  .footerCard::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(700px 260px at 18% 20%, rgba(212,175,55,.10), transparent 60%),
-      linear-gradient(180deg, rgba(10,12,16,.15) 0%, rgba(10,12,16,.78) 100%);
-    pointer-events:none;
-    z-index:0;
-  }
-  .footerCard > *{position:relative; z-index:1;}
-
-  .footerGrid{display:grid; grid-template-columns: 1.2fr .8fr .8fr; gap:18px;}
-  .footBrand{
-    font-weight:700; font-size:18px; letter-spacing:.2px; margin:0 0 8px;
-    font-family:"Playfair Display", serif;
-  }
-  .footDesc{margin:0; color: var(--muted2); font-size:13px; line-height:1.55; max-width:52ch;}
-  .footTitle{
-    margin:2px 0 10px; font-size:12px; letter-spacing:.35px; text-transform:uppercase;
-    color: rgba(234,234,234,.78);
-  }
-  .footLinks{display:grid; gap:8px;}
-  .footLinks a{
-    color: rgba(234,234,234,.70);
-    text-decoration:none;
-    border-bottom:1px dashed rgba(255,255,255,.18);
-    width:max-content;
-    font-size:13px;
-    padding-bottom:2px;
-  }
-  .footLinks a:hover{border-bottom-color:rgba(212,175,55,.55); color:rgba(234,234,234,.90)}
-
-  .footBottom{
-    margin-top:14px;
-    display:flex;
-    gap:10px 14px;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    color: var(--muted2);
-    font-size:12px;
-  }
-
-  /* Responsive */
-  @media (max-width: 980px){
-    .heroInner{grid-template-columns:1fr; padding:34px 18px 24px}
-    h1{font-size:38px}
-    .grid2{grid-template-columns:1fr}
-    .cards{grid-template-columns:1fr}
-    .footerGrid{grid-template-columns:1fr}
-    .topbar{flex-wrap:wrap}
-    .popularBadge{top:10px}
-    .ctaWrap{gap:8px}
-    .packagesPanel{padding:14px}
-  }
-
-  .fineprint{
-    margin-top:6px;
-    font-size:11px;
-    opacity:.45;
-    line-height:1.35;
-  }
-</style>
-
+  <link rel="stylesheet" href="/assets/css/theme.css?v=1">
+  <link rel="stylesheet" href="/assets/css/base.css?v=1">
+  <link rel="stylesheet" href="/assets/css/components.css?v=1">
+  <link rel="stylesheet" href="/assets/css/pages.css?v=1">
 </head>
 
-<body>
-  <!-- PAGE BACKGROUND LAYERS -->
+<body class="page page--info">
+  <header class="siteHeader">
+    <div class="wrap nav">
+      <a class="nav__brand" href="/index.html" aria-label="uaesim home">
+        <span class="nav__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#b8922a" />
+                <stop offset="0.35" stop-color="#ffd36b" />
+                <stop offset="0.6" stop-color="#fff1b8" />
+                <stop offset="1" stop-color="#d4af37" />
+              </linearGradient>
+            </defs>
+            <path class="goldStroke" d="M8 4h7l3 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+            <path class="goldStroke" d="M15 4v3h3" />
+          </svg>
+        </span>
+        <span>
+          <span class="nav__name">UAESIM</span>
+          <span class="nav__sub">Powered by Datara Global</span>
+        </span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a class="nav__link" href="/index.html#plans">Plans</a>
+        <a class="nav__link" href="/more-info.html">More Info</a>
+        <a class="nav__link" href="/contact.html">Contact</a>
+      </nav>
+      <a class="btn btn--outline btn--ghost nav__cta" href="/index.html#plans">Get eSIM</a>
+    </div>
+  </header>
+
   <div class="pageBgBottom" aria-hidden="true"></div>
   <div class="pageBgTop" aria-hidden="true"></div>
   <div class="pageBg" aria-hidden="true"></div>
 
-  <div class="bg-ornaments" aria-hidden="true">
-    <div class="glow one"></div>
-    <div class="glow two"></div>
-    <div class="glow three"></div>
-    <div class="grain"></div>
-  </div>
-
-  <div class="wrap">
-    <!-- Top bar -->
-    <div class="topbar">
-      <a class="brand" href="index.html" aria-label="Back to main page">
-        <div class="logoSim" aria-hidden="true">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <defs>
-              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#b8922a"/>
-                <stop offset="0.35" stop-color="#ffd36b"/>
-                <stop offset="0.6" stop-color="#fff1b8"/>
-                <stop offset="1" stop-color="#d4af37"/>
-              </linearGradient>
-            </defs>
-            <path class="goldStroke" d="M8 4h7l3 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-            <path class="goldStroke" d="M15 4v3h3"/>
-          </svg>
-        </div>
+  <main class="wrap wrap--page">
+    <section class="hero hero--info" id="top">
+      <div class="heroInfoInner">
         <div>
-          <div class="brandName">UAESIM</div>
-          <span class="brandSub">Powered by Datara Global</span>
-        </div>
-      </a>
+          <div class="heroTag"><span class="dot"></span> UAE eSIM · instant digital delivery</div>
 
-      <div class="miniNav">
-        <a class="navLink" href="#packages">Plans</a>
-        <a class="navLink" href="#how">How it works</a>
-        <a class="navLink" href="#faq">FAQ</a>
-      </div>
-    </div>
-
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="heroInner">
-        <div>
-          <div class="tag"><span class="dot"></span> UAE eSIM · instant digital delivery</div>
-
-          <h1>
+          <h1 class="heroInfoTitle">
             Travel eSIM for the UAE<br>
             Get connected minutes after arrival
           </h1>
 
-          <p class="subhead">
+          <p class="heroInfoSub">
             Receive your eSIM instantly by email. Scan the QR code, activate it on your phone,
             and connect without airport queues or paperwork.
           </p>
 
-          <div class="bullets">
-            <div class="pill">
-              <span class="check" aria-hidden="true">
+          <div class="heroInfoBullets">
+            <div class="heroPill">
+              <span class="heroCheck" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg>
               </span>
               No physical SIM
             </div>
-            <div class="pill">
-              <span class="check" aria-hidden="true">
+            <div class="heroPill">
+              <span class="heroCheck" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg>
               </span>
               Works in minutes
             </div>
-            <div class="pill">
-              <span class="check" aria-hidden="true">
+            <div class="heroPill">
+              <span class="heroCheck" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg>
               </span>
               Install from your phone
             </div>
           </div>
 
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="#packages">Get connected</a>
-            <a class="btn" href="#how">How it works</a>
+          <div class="heroCtaRow">
+            <a class="btn btn--outline btn--ghost" href="#packages">Get connected</a>
+            <a class="btn btn--ghost" href="#how">How it works</a>
           </div>
 
-          <div class="micro">
+          <div class="heroMicro">
             Secure checkout · EU-based company ·
             <a href="terms.html">Terms</a> · <a href="refund.html">Refund Policy</a>
           </div>
         </div>
 
         <aside class="heroSide">
-          <p class="sideTitle">Quick facts</p>
+          <p class="heroSideTitle">Quick facts</p>
           <div class="statGrid">
-            <div class="stat">
+            <div class="statItem">
               <div class="k">Delivery</div>
-              <div class="v">Instant by email <span class="badge">QR + codes</span></div>
+              <div class="v">Instant by email <span class="badge badge--hero">QR + codes</span></div>
             </div>
-            <div class="stat">
+            <div class="statItem">
               <div class="k">Coverage</div>
-              <div class="v">Dubai & the UAE <span class="badge">Travel-ready</span></div>
+              <div class="v">Dubai & the UAE <span class="badge badge--hero">Travel-ready</span></div>
             </div>
-            <div class="stat">
+            <div class="statItem">
               <div class="k">Best for</div>
               <div class="v">Tourists, Business travelers, Long stays</div>
             </div>
@@ -744,40 +129,37 @@
       </div>
     </section>
 
-    <!-- PACKAGES -->
-    <section class="section" id="packages">
+    <section class="infoSection" id="packages">
       <div class="packagesPanel">
-
         <div class="sectionHeader">
           <div>
             <h2>Choose your UAE plan</h2>
-            <p class="lead">Keep it simple: three premium options for UAE travel.</p>
+            <p class="sectionLead">Keep it simple: three premium options for UAE travel.</p>
           </div>
         </div>
 
-        <div class="cards">
-          <!-- TOURIST -->
-          <article class="card">
-            <div class="cardInner">
+        <div class="cardsGrid">
+          <article class="card card--plan">
+            <div class="card__inner">
               <div class="planTop">
                 <div>
                   <div class="planName">Tourist Pack</div>
                   <div class="planFor">Short stays · maps · rides · messaging</div>
                 </div>
-                <div class="price">€29<span class="per">/ trip</span></div>
+                <div class="planPrice">€29<span class="per">/ trip</span></div>
               </div>
 
-              <ul class="list">
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Instant QR delivery</li>
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>UAE travel optimized</li>
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Install in minutes</li>
+              <ul class="planList">
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Instant QR delivery</li>
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>UAE travel optimized</li>
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Install in minutes</li>
               </ul>
 
               <div class="ctaWrap">
-                <a class="btn btnPrimary" href="https://buy.stripe.com/REPLACE_TOURIST" target="_blank" rel="noopener">
+                <a class="btn btn--outline btn--ghost" href="https://buy.stripe.com/REPLACE_TOURIST" target="_blank" rel="noopener">
                   Get Tourist Pack
                 </a>
-                <p class="microCard">
+                <p class="infoMicro">
                   By purchasing, you agree to our
                   <a href="terms.html">Terms</a> and
                   <a href="refund.html">Refund Policy</a>.
@@ -786,30 +168,29 @@
             </div>
           </article>
 
-          <!-- BUSINESS (Featured) -->
-          <article class="card featured">
+          <article class="card card--plan featured">
             <div class="popularBadge">MOST POPULAR</div>
 
-            <div class="cardInner" style="padding-top:22px;">
+            <div class="card__inner card__inner--featured">
               <div class="planTop">
                 <div>
                   <div class="planName">Business Pack</div>
                   <div class="planFor">Work trips · meetings · always-on connectivity</div>
                 </div>
-                <div class="price">€39<span class="per">/ trip</span></div>
+                <div class="planPrice">€39<span class="per">/ trip</span></div>
               </div>
 
-              <ul class="list">
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Fast, reliable setup flow</li>
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Designed for business travel</li>
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Clear installation guide included</li>
+              <ul class="planList">
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Fast, reliable setup flow</li>
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Designed for business travel</li>
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Clear installation guide included</li>
               </ul>
 
               <div class="ctaWrap">
-                <a class="btn btnPrimary" href="https://buy.stripe.com/REPLACE_BUSINESS" target="_blank" rel="noopener">
+                <a class="btn btn--outline btn--ghost" href="https://buy.stripe.com/REPLACE_BUSINESS" target="_blank" rel="noopener">
                   Get Business Pack
                 </a>
-                <p class="microCard">
+                <p class="infoMicro">
                   By purchasing, you agree to our
                   <a href="terms.html">Terms</a> and
                   <a href="refund.html">Refund Policy</a>.
@@ -818,28 +199,27 @@
             </div>
           </article>
 
-          <!-- LONG STAY -->
-          <article class="card">
-            <div class="cardInner">
+          <article class="card card--plan">
+            <div class="card__inner">
               <div class="planTop">
                 <div>
                   <div class="planName">Long Stay Pack</div>
                   <div class="planFor">Extended visits · remote work · longer validity</div>
                 </div>
-                <div class="price">€59<span class="per">/ trip</span></div>
+                <div class="planPrice">€59<span class="per">/ trip</span></div>
               </div>
 
-              <ul class="list">
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Extended travel coverage</li>
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Great for longer stays</li>
-                <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Instant QR delivery</li>
+              <ul class="planList">
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Extended travel coverage</li>
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Great for longer stays</li>
+                <li><span class="planTick"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7l-9.4 9.2z"/></svg></span>Instant QR delivery</li>
               </ul>
 
               <div class="ctaWrap">
-                <a class="btn btnPrimary" href="https://buy.stripe.com/REPLACE_LONGSTAY" target="_blank" rel="noopener">
+                <a class="btn btn--outline btn--ghost" href="https://buy.stripe.com/REPLACE_LONGSTAY" target="_blank" rel="noopener">
                   Get Long Stay Pack
                 </a>
-                <p class="microCard">
+                <p class="infoMicro">
                   By purchasing, you agree to our
                   <a href="terms.html">Terms</a> and
                   <a href="refund.html">Refund Policy</a>.
@@ -847,39 +227,37 @@
               </div>
             </div>
           </article>
-        </div><!-- /.cards -->
-
-      </div><!-- /.packagesPanel -->
+        </div>
+      </div>
     </section>
 
-    <!-- HOW IT WORKS + TRUST -->
-    <section class="section" id="how">
+    <section class="infoSection" id="how">
       <div class="sectionHeader">
         <div>
           <h2>How it works</h2>
-          <p class="lead">Three steps. No store visit. No physical SIM.</p>
+          <p class="sectionLead">Three steps. No store visit. No physical SIM.</p>
         </div>
       </div>
 
-      <div class="grid2">
+      <div class="gridSplit">
         <div class="panel">
-          <div class="steps">
-            <div class="step">
-              <div class="num">1</div>
+          <div class="stepsList">
+            <div class="stepItem">
+              <div class="stepNum">1</div>
               <div>
                 <h3>Choose your plan</h3>
                 <p>Select Tourist, Business, or Long Stay depending on your trip.</p>
               </div>
             </div>
-            <div class="step">
-              <div class="num">2</div>
+            <div class="stepItem">
+              <div class="stepNum">2</div>
               <div>
                 <h3>Receive your QR instantly</h3>
                 <p>Your eSIM QR code and activation details arrive by email.</p>
               </div>
             </div>
-            <div class="step">
-              <div class="num">3</div>
+            <div class="stepItem">
+              <div class="stepNum">3</div>
               <div>
                 <h3>Scan · activate · connect</h3>
                 <p>Install on Wi-Fi, then enjoy reliable connectivity in the UAE.</p>
@@ -889,19 +267,19 @@
         </div>
 
         <div class="panel">
-          <h2 style="font-size:16px; margin:0;">Trust & clarity</h2>
-          <p class="lead" style="margin-top:8px;">Premium experience means transparent policies and simple support.</p>
+          <h2 class="trustHeading">Trust &amp; clarity</h2>
+          <p class="sectionLead trustLead">Premium experience means transparent policies and simple support.</p>
 
           <div class="trustGrid">
-            <div class="trust">
+            <div class="trustCard">
               <b>Secure checkout</b>
               <div>Payments processed via Stripe. No sensitive card data stored on our servers.</div>
             </div>
-            <div class="trust">
+            <div class="trustCard">
               <b>EU-based business</b>
               <div>Clear contact information and policies available below.</div>
             </div>
-            <div class="trust">
+            <div class="trustCard">
               <b>Digital delivery</b>
               <div>Instant QR delivery by email. Install before travel or upon arrival.</div>
             </div>
@@ -910,12 +288,11 @@
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section" id="faq">
+    <section class="infoSection" id="faq">
       <div class="sectionHeader">
         <div>
           <h2>FAQ</h2>
-          <p class="lead">Only the questions that matter before you buy a UAE eSIM.</p>
+          <p class="sectionLead">Only the questions that matter before you buy a UAE eSIM.</p>
         </div>
       </div>
 
@@ -1045,58 +422,55 @@
         Need policy details? Read <a href="refund.html">Refund</a>, <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy</a>.
       </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <div class="footer" id="footer">
-      <div class="footerCard">
-        <div class="footerGrid">
-          <div>
-            <div class="footBrand">UAESIM</div>
-            <p class="footDesc">
-              Stay connected in Dubai & across the UAE with a premium travel eSIM.
-              Instant QR delivery, easy setup, and reliable data for tourists, business trips, and long stays.
-            </p>
-          </div>
+  <footer class="siteFooter">
+    <div class="wrap footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">UAESIM</div>
+          <p class="footer__desc">
+            Stay connected in Dubai &amp; across the UAE with a premium travel eSIM.
+            Instant QR delivery, easy setup, and reliable data for tourists, business trips, and long stays.
+          </p>
+        </div>
 
-          <div>
-            <div class="footTitle">Quick Links</div>
-            <div class="footLinks">
-              <a href="#packages">Plans</a>
-              <a href="#how">How it works</a>
-              <a href="#faq">FAQ</a>
-              <a href="contact.html">Support / Contact</a>
-            </div>
-          </div>
-
-          <div>
-            <div class="footTitle">Legal</div>
-            <div class="footLinks">
-              <a href="privacy.html">Privacy Policy</a>
-              <a href="terms.html">Terms & Conditions</a>
-              <a href="refund.html">Refund Policy</a>
-            </div>
+        <div>
+          <div class="footer__title">Quick Links</div>
+          <div class="footer__list">
+            <a href="#packages">Plans</a>
+            <a href="#how">How it works</a>
+            <a href="#faq">FAQ</a>
+            <a href="contact.html">Support / Contact</a>
           </div>
         </div>
 
-        <div class="footBottom">
-          <div>
-            © <span id="y"></span> Powered by Datara Global · EU-based company · Digital delivery
-            <div class="fineprint">
-              Operated by TOMVIK s.r.o. (Slovakia)
-            </div>
+        <div>
+          <div class="footer__title">Legal</div>
+          <div class="footer__list">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="refund.html">Refund Policy</a>
           </div>
+        </div>
+      </div>
 
-          <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <span>Secure checkout</span>
-            <span>•</span>
-            <span>Instant QR by email</span>
+      <div class="footer__bottom">
+        <div>
+          © <span id="y"></span> Powered by Datara Global · EU-based company · Digital delivery
+          <div class="fineprint">
+            Operated by TOMVIK s.r.o. (Slovakia)
           </div>
         </div>
 
+        <div class="footerMetaRow">
+          <span>Secure checkout</span>
+          <span>•</span>
+          <span>Instant QR by email</span>
+        </div>
       </div>
     </div>
-
-  </div><!-- /wrap -->
+  </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
