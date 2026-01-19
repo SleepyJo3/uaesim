@@ -7,7 +7,7 @@
   position: relative;
   padding: 70px 0 10px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.54) 22%, rgba(0, 0, 0, 0.4) 55%, rgba(5, 4, 3, 0.92) 100%),
-    url("../img/hero-dubai.webp");
+    var(--brand-hero-image);
   background-size: cover;
   background-position: right 55% center;
   border-bottom: 1px solid rgba(202, 162, 74, 0.14);
@@ -228,7 +228,7 @@
 .howSection {
   padding: 26px 0 0;
   background: linear-gradient(180deg, rgba(5, 4, 3, 0.98) 0%, rgba(5, 4, 3, 0.78) 36%, rgba(5, 4, 3, 0.92) 100%),
-    url("../img/bottom-bokeh.webp");
+    var(--brand-bottom-bokeh);
   background-size: cover;
   background-position: center bottom;
   border-top: 1px solid rgba(202, 162, 74, 0.12);
@@ -292,8 +292,8 @@
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  background: url("../img/background_top.webp") top center / cover no-repeat,
-    url("../img/background_bottom.webp") bottom center / cover no-repeat,
+  background: var(--brand-background-top) top center / cover no-repeat,
+    var(--brand-background-bottom) bottom center / cover no-repeat,
     radial-gradient(1100px 650px at 35% 18%, rgba(212, 175, 55, 0.18), transparent 62%),
     linear-gradient(180deg, rgba(8, 10, 14, 0.15) 0%, rgba(8, 10, 14, 0.35) 45%, rgba(8, 10, 14, 0.55) 100%),
     radial-gradient(1400px 900px at 50% 35%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
@@ -312,12 +312,12 @@
 }
 
 .pageBgTop {
-  background-image: url("../img/background_top.webp");
+  background-image: var(--brand-background-top);
   background-position: center top;
 }
 
 .pageBgBottom {
-  background-image: url("../img/background_bottom.webp");
+  background-image: var(--brand-background-bottom);
   background-position: center bottom;
   opacity: 0.22;
 }

@@ -1,0 +1,6 @@
+:root {
+  --brand-hero-image: url("../brand/current/hero.webp");
+  --brand-bottom-bokeh: url("../brand/current/bottom-bokeh.webp");
+  --brand-background-top: url("../brand/current/background_top.webp");
+  --brand-background-bottom: url("../brand/current/background_bottom.webp");
+}
